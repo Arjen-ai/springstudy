@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+<!--注册bean-->
+    <bean id="userService" class="edu.xalead.service.UserServiceImpl"/>
+    <bean id="log" class="edu.xalead.log.Log"/>
+    <bean id="afterlog" class="edu.xalead.log.AfterLog"/>
+    <!--方法一：用spring API接口实现-->
+<!--配置aop-->
+    <!--<aop:config>-->
+        <!--&lt;!&ndash;配置切入点 expression:表达式，execution(要执行的位置！ * ...)&ndash;&gt;-->
+        <!--<aop:pointcut id="pointcut" expression="execution(* edu.xalead.service.UserServiceImpl.*(..))"/>-->
+        <!--&lt;!&ndash;执行环绕增强&ndash;&gt;-->
+        <!--<aop:advisor advice-ref="log" pointcut-ref="pointcut"/>-->
+        <!--<aop:advisor advice-ref="afterlog" pointcut-ref="pointcut"/>-->
+    <!--</aop:config>-->
+    <!--方法二：自定义实现-->
+    <!--<bean id="diy" class="edu.xalead.diy.advice"></bean>-->
+    <!--<aop:config>-->
+        <!--<aop:aspect ref="diy">-->
+            <!--<aop:pointcut id="point" expression="execution(* edu.xalead.service.UserServiceImpl.*(..))"/>-->
+            <!--<aop:before method="before" pointcut-ref="point"/>-->
+            <!--<aop:after method="after" pointcut-ref="point"/>-->
+        <!--</aop:aspect>-->
+    <!--</aop:config>-->
+    <!--方式三-->
+    <bean id="annotationPointCut" class="edu.xalead.diy.AnnotationPointCut"/>
+    <!--开启注解支持-->
+    <aop:aspectj-autoproxy/>
+</beans>

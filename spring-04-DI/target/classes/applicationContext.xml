@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="address" class="edu.xalead.pojo.Address">
+        <property name="address" value="西安"/>
+    </bean>
+
+    <bean id="student" class="edu.xalead.pojo.Student">
+        <property name="name" value="张三"/>
+        <property name="address" ref="address"/>
+        <property name="books">
+            <array>
+                <value>红楼梦</value>
+                <value>三国</value>
+            </array>
+        </property>
+        <property name="hobbys">
+            <list>
+                <value>听歌</value>
+                <value>敲代码</value>
+            </list>
+        </property>
+        <property name="card">
+            <map>
+                <entry key="身份证" value="111111111111111111"></entry>
+                <entry key="银行卡" value="222222222222222"></entry>
+            </map>
+        </property>
+
+        <property name="games">
+            <set>
+                <value>LOL</value>
+                <value>BOB</value>
+            </set>
+        </property>
+
+        <property name="wife">
+            <null/>
+        </property>
+
+        <property name="info">
+            <props>
+                <prop key="学号">17060416108</prop>
+                <prop key="性别">男</prop>
+            </props>
+        </property>
+    </bean>
+</beans>
